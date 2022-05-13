@@ -16,12 +16,16 @@
 
 module "project-factory" {
   source                  = "../../"
-  random_project_id       = true
-  name                    = "simple-sample-project"
+  # random_project_id       = true
+  name                    = "simple-sample-project-001"
   org_id                  = var.organization_id
+  folder_id               = var.folder_id
   billing_account         = var.billing_account
   default_service_account = "deprivilege"
-
+  terraform_service_account = var.terraform_service_account
+    activate_apis = [
+    "appengine.googleapis.com"
+  ]
   activate_api_identities = [{
     api = "healthcare.googleapis.com"
     roles = [
@@ -29,4 +33,8 @@ module "project-factory" {
       "roles/bigquery.jobUser",
     ]
   }]
+  labels = {
+    "cost-center" : "dept-x"
+    "env"         : "dev"
+  }
 }

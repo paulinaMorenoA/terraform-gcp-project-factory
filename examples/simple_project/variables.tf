@@ -21,3 +21,14 @@ variable "organization_id" {
 variable "billing_account" {
   description = "The ID of the billing account to associate this project with"
 }
+
+variable "terraform_service_account" {
+  description = "Service account email of the account to impersonate to run Terraform."
+  type        = string
+}
+
+variable "folder_id" {
+  description = "The ID of a folder to host this project"
+  type        = string
+  default     = ""
+}

@@ -24,3 +24,8 @@ output "domain_example" {
   description = "The organization's domain"
 }
 
+output "enabled_api_identities" {
+  description = "Enabled API identities in the project"
+  value       = module.project-factory.enabled_api_identities
+}
+
